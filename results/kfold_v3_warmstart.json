@@ -1,0 +1,72 @@
+{
+  "condition": "warmstart",
+  "folds": [
+    {
+      "fold": 0,
+      "start_sigma": 12,
+      "start_cc": 0.7524956464385365,
+      "start_sim": 0.6924467684210228,
+      "start_kld": 0.35475291953447824,
+      "trained_sigma": 4,
+      "trained_cc": 0.8995068544312735,
+      "trained_sim": 0.805992482818625,
+      "trained_kld": 0.146946396147842
+    },
+    {
+      "fold": 1,
+      "start_sigma": 12,
+      "start_cc": 0.7550948017382061,
+      "start_sim": 0.692635669233714,
+      "start_kld": 0.34936053617262774,
+      "trained_sigma": 4,
+      "trained_cc": 0.8971054378308346,
+      "trained_sim": 0.8003688339781473,
+      "trained_kld": 0.1549661937869259
+    },
+    {
+      "fold": 2,
+      "start_sigma": 12,
+      "start_cc": 0.7421134000532349,
+      "start_sim": 0.692104508900425,
+      "start_kld": 0.34797642197361384,
+      "trained_sigma": 4,
+      "trained_cc": 0.8907727256854244,
+      "trained_sim": 0.801335044066741,
+      "trained_kld": 0.15859395216789302
+    },
+    {
+      "fold": 3,
+      "start_sigma": 12,
+      "start_cc": 0.7392859393449737,
+      "start_sim": 0.6882507631351525,
+      "start_kld": 0.3569171952626914,
+      "trained_sigma": 4,
+      "trained_cc": 0.8954787395638077,
+      "trained_sim": 0.8053826431143087,
+      "trained_kld": 0.15306664324735952
+    },
+    {
+      "fold": 4,
+      "start_sigma": 12,
+      "start_cc": 0.727521842214609,
+      "start_sim": 0.683478755382165,
+      "start_kld": 0.3765131985267093,
+      "trained_sigma": 4,
+      "trained_cc": 0.892287197892156,
+      "trained_sim": 0.8046435555016052,
+      "trained_kld": 0.15271198212089757
+    }
+  ],
+  "mean_start_cc": 0.743302325957912,
+  "std_start_cc": 0.009900991868417473,
+  "mean_start_sim": 0.6897832930144958,
+  "std_start_sim": 0.0035415826155768644,
+  "mean_start_kld": 0.35710405429402414,
+  "std_start_kld": 0.010252349735288038,
+  "mean_trained_cc": 0.8950301910806993,
+  "std_trained_cc": 0.00316854486458306,
+  "mean_trained_sim": 0.8035445118958855,
+  "std_trained_sim": 0.002260347901860591,
+  "mean_trained_kld": 0.15325703349418357,
+  "std_trained_kld": 0.0037831574907403287
+}

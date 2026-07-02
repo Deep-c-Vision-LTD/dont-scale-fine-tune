@@ -1,0 +1,72 @@
+{
+  "condition": "scratch",
+  "folds": [
+    {
+      "fold": 0,
+      "start_sigma": 12,
+      "start_cc": 0.13489208603615793,
+      "start_sim": 0.4537562137839574,
+      "start_kld": 0.914162738493969,
+      "trained_sigma": 4,
+      "trained_cc": 0.9003599986283226,
+      "trained_sim": 0.804959481926883,
+      "trained_kld": 0.1466044882735024
+    },
+    {
+      "fold": 1,
+      "start_sigma": 12,
+      "start_cc": 0.10537006397026985,
+      "start_sim": 0.44833766037042744,
+      "start_kld": 0.9365547812769046,
+      "trained_sigma": 4,
+      "trained_cc": 0.9025807925072814,
+      "trained_sim": 0.8072574704266944,
+      "trained_kld": 0.14683476785086552
+    },
+    {
+      "fold": 2,
+      "start_sigma": 0,
+      "start_cc": 0.015510508378887646,
+      "start_sim": 0.4570786871254037,
+      "start_kld": 0.9069014536198164,
+      "trained_sigma": 4,
+      "trained_cc": 0.8940314100605079,
+      "trained_sim": 0.8030838165345072,
+      "trained_kld": 0.15137476633264343
+    },
+    {
+      "fold": 3,
+      "start_sigma": 0,
+      "start_cc": -0.04740663409949155,
+      "start_sim": 0.4558711318694527,
+      "start_kld": 0.9144957585840195,
+      "trained_sigma": 4,
+      "trained_cc": 0.8958186046164497,
+      "trained_sim": 0.8031990123144211,
+      "trained_kld": 0.1510207493814847
+    },
+    {
+      "fold": 4,
+      "start_sigma": 12,
+      "start_cc": 0.0821525133060176,
+      "start_sim": 0.47080796990923446,
+      "start_kld": 0.8619262902497471,
+      "trained_sigma": 4,
+      "trained_cc": 0.8961472020670922,
+      "trained_sim": 0.8086052657715322,
+      "trained_kld": 0.1457427705537827
+    }
+  ],
+  "mean_start_cc": 0.0581037075183683,
+  "std_start_cc": 0.06581112578993702,
+  "mean_start_sim": 0.45717033261169515,
+  "std_start_sim": 0.007447869209574113,
+  "mean_start_kld": 0.9068082044448914,
+  "std_start_kld": 0.02454563672090359,
+  "mean_trained_cc": 0.8977876015759307,
+  "std_trained_cc": 0.0031707645820878753,
+  "mean_trained_sim": 0.8054210093948075,
+  "std_trained_sim": 0.00219658038275334,
+  "mean_trained_kld": 0.14831550847845576,
+  "std_trained_kld": 0.002383969393211068
+}
