@@ -2,21 +2,23 @@
 
 Code and results for:
 
-> Hamit Soyel. **Don't Scale, Fine-Tune: Twenty-Five Fixation Maps Beat State-of-the-Art
+> Hamit Soyel. **Don't Scale, Fine-Tune: One Hundred Fixation Maps Beat State-of-the-Art
 > Saliency Models on Advertising Images.** IEEE Signal Processing Letters (submitted).
 
 ## The result in one paragraph
 
 General-purpose saliency models have plateaued on advertising images: DeepGaze IIE (2021)
 reaches CC 0.766 on the ADD1000 advertising fixation benchmark and its far larger 2025
-successor DeepGazeMSDB reaches only CC 0.777, at roughly 50x the inference cost. Training
-**xSoyelNet** — a 1.5M-parameter ASPP readout with a Gaussian finalizer on a frozen
-DINOv2-base backbone — on ADD1000's own fixation maps reaches **CC 0.895±0.003** (5-fold
-CV) warm-started, and **CC 0.898±0.003 from a randomly initialized readout**: the decisive
-ingredient is benchmark-matched in-domain data on strong frozen features, not
-saliency-specific pretraining. As few as **25 fixation maps already beat both general
-models** (CC 0.819 warm-started); the warm-start advantage is confined to the low-data
-regime and vanishes by n≈400.
+successor DeepGazeMSDB reaches only CC 0.777, at roughly 50x the inference cost. The
+strongest zero-shot model is the unified designed-media SUM (WACV 2025) at CC 0.836 with
+its best domain token (e-commerce). Training **xSoyelNet** — a 1.5M-parameter ASPP
+readout with a Gaussian finalizer on a frozen DINOv2-base backbone — on ADD1000's own
+fixation maps reaches **CC 0.895±0.003** (5-fold CV) warm-started, and **CC 0.898±0.003
+from a randomly initialized readout**: the decisive ingredient is benchmark-matched
+in-domain data on strong frozen features, not saliency-specific pretraining. As few as
+**25 fixation maps already beat both general models** (CC 0.819 warm-started) and **100
+beat every model tested including SUM** (CC 0.862 vs 0.841 on the same held-out test
+set); the warm-start advantage is confined to the low-data regime and vanishes by n≈400.
 
 ![sample efficiency](figures/fig_sampeff.png)
 
@@ -50,6 +52,11 @@ python sample_efficiency.py
 python eval_deepgaze_iie.py
 python eval_deepgaze_msdb.py   # ~8 s/image on CPU, ~2.3 h; resumes from msdb_checkpoint.json
 
+# SUM (WACV'25) baseline: CUDA required (mamba-ssm). eval_sum_add1000.py is the
+# SageMaker/GPU-box entry point we used; it installs SUM from the authors' repo,
+# loads their HuggingFace checkpoint, and sweeps all 4 domain tokens (best: CC 0.836).
+# Per-image and summary outputs are pre-computed in results/sum_add1000_*.json.
+
 # Figures
 python make_sampeff_fig.py     # Fig. 2 from results/*.json (pre-computed copies included)
 python make_qualitative_fig.py # Fig. 1 (needs a trained checkpoint from kfold_train_eval.py)
@@ -64,6 +71,7 @@ kfold_train_eval.py        5-fold CV train+eval (--scratch for the no-warm-start
 sample_efficiency.py       CC vs training-set size (25..800), fixed held-out test set
 eval_deepgaze_iie.py       DeepGaze IIE zero-shot baseline, 2-fold held-out center-bias
 eval_deepgaze_msdb.py      DeepGazeMSDB (ICCV'25) baseline, generalization mode, resumable
+eval_sum_add1000.py        SUM (WACV'25) baseline on a CUDA GPU, all 4 domain tokens
 model_aspp.py              xSoyelNet architecture: frozen DINOv2-base + ASPP readout
 make_sampeff_fig.py        Fig. 2
 make_qualitative_fig.py    Fig. 1
