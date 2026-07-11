@@ -21,7 +21,8 @@ for data, label, color, marker in [
 # SUM (WACV'25) best domain token, scored on this figure's exact 200-image test set
 # (per-image json from sm job add1000-sum-2026-07-07, cond 2).
 ax.axhline(0.841, color="#3a7d44", linestyle="-.", linewidth=1.2)
-ax.text(210, 0.8425, "SUM (2025, zero-shot, best token)", fontsize=8, color="#3a7d44")
+ax.text(800, 0.8455, "SUM (2025, zero-shot, best token)", fontsize=8, color="#3a7d44",
+        ha="right")
 ax.axhline(0.777, color="#666666", linestyle="--", linewidth=1.2)
 ax.axhline(0.766, color="#aaaaaa", linestyle=":", linewidth=1.2)
 ax.text(105, 0.7795, "DeepGazeMSDB (2025, zero-shot)", fontsize=8, color="#555555")
