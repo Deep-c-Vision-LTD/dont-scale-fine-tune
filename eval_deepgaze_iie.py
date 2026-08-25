@@ -79,3 +79,13 @@ SIM = (simA*len(fold_a) + simB*len(fold_b)) / len(P)
 KLD = (kldA*len(fold_a) + kldB*len(fold_b)) / len(P)
 print(f"\nRESULT DeepGazeIIE + ad-domain centerbias (2-fold, held-out) on ADD1000 (n={len(P)}): CC={CC:.3f} SIM={SIM:.3f} KLD={KLD:.3f}")
 print(f"(uniform-prior baseline was: CC=0.750 SIM=0.705 KLD=0.320)")
+
+import json, os
+os.makedirs("results", exist_ok=True)
+json.dump({"model": "DeepGazeIIE_zeroshot_ADD1000",
+           "protocol": "2-fold ad-domain centerbias (fit on complementary half), eval@384",
+           "CC": CC, "SIM": SIM, "KLD": KLD, "n": len(P),
+           "per_fold": {"A": {"CC": ccA, "SIM": simA, "KLD": kldA},
+                        "B": {"CC": ccB, "SIM": simB, "KLD": kldB}}},
+          open("results/deepgaze_iie_zeroshot_add1000.json", "w"), indent=2)
+print("saved -> results/deepgaze_iie_zeroshot_add1000.json")

@@ -39,6 +39,15 @@ no center bias 0.895; every effect is larger on SIM/KLD than on CC. The result c
 the frozen representation and in-domain data, each readout choice adding a small refinement.
 Script: `ablation_add1000.py`; result: `results/ablation_add1000.json`.
 
+**Cross-corpus control (paper Table I, designed-media row).** The same architecture trained
+from scratch on the Imp1k designed-media importance dataset (Fosco 2020; ads, infographics,
+posters, web/mobile UIs), at the identical 448-input protocol, then applied zero-shot to
+ADD1000, reaches only **CC 0.622** (SIM 0.632, KLD 0.471), below both general zero-shot
+models. Imp1k uses importance annotations (mouse interaction) rather than eye-tracking
+fixations, so similar-domain data is no substitute for benchmark-matched data. The finalizer
+bandwidth is selected on Imp1k, not on ADD1000 (0.635 if tuned directly on ADD1000).
+Script: `crosscorpus_imp1k_add1000.py`; result: `results/crosscorpus_imp1k_add1000.json`.
+
 ![sample efficiency](figures/fig_sampeff.png)
 
 ## Fully reproducible without any private weights

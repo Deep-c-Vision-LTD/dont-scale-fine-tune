@@ -1,0 +1,13 @@
+{
+  "baseline": "crosscorpus_imp1k_scratch_ADD1000_zeroshot",
+  "protocol": "train from scratch on Imp1k (n=998), 448 input, 60ep, KL+CC; eval ADD1000@384",
+  "imp1k_train_cc": 0.9776409104345314,
+  "sigma_selected_on_imp1k": 2,
+  "ADD1000_zeroshot_CC": 0.6222984122048141,
+  "ADD1000_zeroshot_SIM": 0.6321659109394738,
+  "ADD1000_zeroshot_KLD": 0.47102863577298987,
+  "sigma_oracle_on_ADD1000": 12,
+  "ADD1000_oracle_CC": 0.635350983058269,
+  "ADD1000_oracle_SIM": 0.6351740870214231,
+  "ADD1000_oracle_KLD": 0.4469476427841817
+}
