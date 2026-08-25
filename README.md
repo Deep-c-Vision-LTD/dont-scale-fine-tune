@@ -11,7 +11,7 @@ General-purpose saliency models have plateaued on advertising images: DeepGaze I
 reaches CC 0.766 on the ADD1000 advertising fixation benchmark and its far larger 2025
 successor DeepGazeMSDB reaches only CC 0.777, at roughly 50x the inference cost. The
 strongest zero-shot model is the unified designed-media SUM (WACV 2025) at CC 0.836 with
-its best domain token (e-commerce). Training **xSoyelNet** — a 1.5M-parameter ASPP
+its best domain token (e-commerce). Training **xSoyelNet** — a 3.7M-parameter ASPP
 readout with a Gaussian finalizer on a frozen DINOv2-base backbone — on ADD1000's own
 fixation maps reaches **CC 0.895±0.003** (5-fold CV) warm-started, and **CC 0.898±0.003
 from a randomly initialized readout**: the decisive ingredient is benchmark-matched
@@ -19,6 +19,18 @@ in-domain data on strong frozen features, not saliency-specific pretraining. As 
 **25 fixation maps already beat both general models** (CC 0.819 warm-started) and **100
 beat every model tested including SUM** (CC 0.862 vs 0.841 on the same held-out test
 set); the warm-start advantage is confined to the low-data regime and vanishes by n≈400.
+
+**In-domain baselines (fair comparison).** To separate the effect of in-domain data from
+the representation, we also fine-tune DeepGaze IIE in-domain on ADD1000 under the identical
+seed-0 5-fold protocol (readout adapted, backbone frozen, common 384 scoring). It rises
+from **0.766 zero-shot to 0.850±0.004** — most of the zero-shot gap is closed by the data,
+confirming benchmark-matched fixation data as the larger, model-agnostic lever. At equal
+data and comparable scale, xSoyelNet's 3.7M readout still leads by **+0.045 CC** (0.895 vs
+0.850). Two levers compound: in-domain data lifts any model, and a strong frozen general
+representation adds a further margin on top. Script: `ft_deepgaze_iie_indomain.py`; result:
+`results/deepgaze_indomain_add1000.json`. A near-duplicate scan
+(`results/near_dup_analysis.json`) finds only 5/1000 similar image pairs (4 cross-fold),
+too few to explain the gap.
 
 ![sample efficiency](figures/fig_sampeff.png)
 

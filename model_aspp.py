@@ -6,7 +6,7 @@ Replaces the 3-conv readout with an Atrous Spatial Pyramid Pooling module
 global context on the 16x16 patch grid — the same mechanism that gives
 MSI-Net crisp, peaked maps.
 
-Trainable params: ASPP + projection + center bias (~1.5M).
+Trainable params: ASPP + projection + center bias (~3.7M).
 Backbone: fully frozen.
 """
 import torch

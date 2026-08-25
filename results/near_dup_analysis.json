@@ -1,0 +1,6 @@
+{
+  "n_images": 1000,
+  "near_dup_pairs": 5,
+  "cross_fold_pairs": 4,
+  "threshold_bits": 26
+}
