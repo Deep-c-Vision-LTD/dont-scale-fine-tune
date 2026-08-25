@@ -1,10 +1,11 @@
 """
-In-domain fine-tuning of DeepGaze IIE on ADD1000, for the reviewer-driven revision
-of the ad-saliency letter. Answers Reviewer 1's Comment 3: the original paper
-compared our in-domain-trained readout against zero-shot baselines, which is
-unfair. DeepGaze IIE is itself a frozen-backbone model with a ~3.1M-parameter
-trainable readout, the same shape as ours, so the fair test is to give it the
-same in-domain ADD1000 data under the identical 5-fold protocol and re-compare.
+In-domain fine-tuning of DeepGaze IIE on ADD1000, for the fair in-domain
+comparison in the paper. It separates the effect of in-domain data from the
+representation: rather than compare our in-domain-trained readout against
+zero-shot baselines, we give a general baseline the same in-domain supervision.
+DeepGaze IIE is itself a frozen-backbone model with a ~3.1M-parameter trainable
+readout, the same shape as ours, so the like-for-like test is to fine-tune it on
+the same in-domain ADD1000 data under the identical 5-fold protocol and re-compare.
 
 Protocol matches saliency_research/add1000_kfold_v3.py: seed-0 5-fold,
 800 train / 200 test per fold, backbone frozen, readout trained on KL loss,
