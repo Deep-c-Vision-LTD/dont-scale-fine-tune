@@ -32,6 +32,13 @@ representation adds a further margin on top. Script: `ft_deepgaze_iie_indomain.p
 (`results/near_dup_analysis.json`) finds only 5/1000 similar image pairs (4 cross-fold),
 too few to explain the gap.
 
+**Module ablation (paper Table II).** Removing one readout component at a time under the
+identical 5-fold protocol shows no single component is individually large (CC, full 0.895):
+plain 2-conv readout instead of ASPP 0.892, no Gaussian finalizer 0.892, KL-only loss 0.890,
+no center bias 0.895; every effect is larger on SIM/KLD than on CC. The result comes from
+the frozen representation and in-domain data, each readout choice adding a small refinement.
+Script: `ablation_add1000.py`; result: `results/ablation_add1000.json`.
+
 ![sample efficiency](figures/fig_sampeff.png)
 
 ## Fully reproducible without any private weights
