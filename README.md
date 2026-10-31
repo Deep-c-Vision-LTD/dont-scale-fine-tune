@@ -81,13 +81,15 @@ python eval_deepgaze_iie.py
 python eval_deepgaze_msdb.py   # ~8 s/image on CPU, ~2.3 h; resumes from msdb_checkpoint.json
 
 # SUM (WACV'25) baseline: CUDA required (mamba-ssm). eval_sum_add1000.py is the
-# SageMaker/GPU-box entry point we used; it installs SUM from the authors' repo,
+# GPU entry point we used; it installs SUM from the authors' repo,
 # loads their HuggingFace checkpoint, and sweeps all 4 domain tokens (best: CC 0.836).
 # Per-image and summary outputs are pre-computed in results/sum_add1000_*.json.
 
-# Figures
-python make_sampeff_fig.py     # Fig. 2 from results/*.json (pre-computed copies included)
-python make_qualitative_fig.py # Fig. 1 (needs a trained checkpoint from kfold_train_eval.py)
+# Figures (Fig. 1, the framework diagram, is drawn in the LaTeX source)
+python make_qualitative_fig.py      # qualitative panels, full width (needs a trained checkpoint from kfold_train_eval.py)
+python make_qualitative_fig_col.py  # Fig. 2 as printed: the same panels re-tiled at single-column width
+python make_sampeff_fig.py          # sample-efficiency plot, full width, from results/*.json
+python make_sampeff_fig_col.py      # Fig. 3 as printed: same data at single-column width
 ```
 
 Pre-computed result JSONs for every table/figure entry are in `results/`.
@@ -101,8 +103,10 @@ eval_deepgaze_iie.py       DeepGaze IIE zero-shot baseline, 2-fold held-out cent
 eval_deepgaze_msdb.py      DeepGazeMSDB (ICCV'25) baseline, generalization mode, resumable
 eval_sum_add1000.py        SUM (WACV'25) baseline on a CUDA GPU, all 4 domain tokens
 model_aspp.py              xSoyelNet architecture: frozen DINOv2-base + ASPP readout
-make_sampeff_fig.py        Fig. 2
-make_qualitative_fig.py    Fig. 1
+make_qualitative_fig.py    qualitative panels (full width)
+make_qualitative_fig_col.py Fig. 2 as printed (single column)
+make_sampeff_fig.py        sample-efficiency plot (full width)
+make_sampeff_fig_col.py    Fig. 3 as printed (single column)
 results/                   pre-computed JSONs backing every number in the paper
 figures/                   pre-rendered paper figures
 ```

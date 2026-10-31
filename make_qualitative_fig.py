@@ -38,7 +38,8 @@ def ours_predict(path):
     cb = F.interpolate(ours.center_bias, size=s.shape[-2:], mode="bilinear", align_corners=False)
     s = s + cb
     pr = torch.sigmoid(F.interpolate(s, size=(EVAL, EVAL), mode="bilinear", align_corners=False))
-    # Gaussian finalizer (sigma=8 at 384^2, the train-selected value; see paper Method)
+    # Gaussian finalizer for this figure's checkpoint: sigma=8 px at 384^2, fixed for display.
+    # (The cross-validated models behind Table I each select sigma on their own training folds; see paper Method.)
     return gaussian_filter(pr[0, 0].cpu().numpy(), 8)
 
 

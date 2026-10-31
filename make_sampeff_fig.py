@@ -19,7 +19,7 @@ for data, label, color, marker in [
                 linewidth=1.8, markersize=5, capsize=2)
 
 # SUM (WACV'25) best domain token, scored on this figure's exact 200-image test set
-# (per-image json from sm job add1000-sum-2026-07-07, cond 2).
+# (per-image json from the SUM evaluation run of 2026-07-07, domain token 2).
 ax.axhline(0.841, color="#3a7d44", linestyle="-.", linewidth=1.2)
 ax.text(800, 0.8455, "SUM (2025, zero-shot, best token)", fontsize=8, color="#3a7d44",
         ha="right")
