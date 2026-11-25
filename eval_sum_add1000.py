@@ -1,17 +1,17 @@
 """
-SageMaker entry point: run SUM (WACV 2025, Mamba) on ADD1000 and report CC / SIM / KLD
+GPU entry point: run SUM (WACV 2025, Mamba) on ADD1000 and report CC / SIM / KLD
 under our protocol (eval at 384x384, density metrics), sweeping all four domain
 condition tokens (0 natural-mouse, 1 natural-eye, 2 e-commerce, 3 UI) and reporting
 each, so the paper can quote SUM at its own best condition (steelman).
 
-Data channel 'add' contains images/ (*.jpg) and maps/ (*.png), paired by stem.
-Artifacts: per-image metrics json + per-condition mean summary to SM_MODEL_DIR.
+$ADD1000_DIR (default ./flat) contains images/ (*.jpg) and maps/ (*.png), paired by stem.
+Artifacts: per-image metrics json + per-condition mean summary to $OUT_DIR (default ./model).
 """
 import os, glob, json, subprocess, sys, traceback
 import numpy as np
 
 EPS = 1e-8
-ADD = os.environ.get("SM_CHANNEL_ADD", "./flat")
+ADD = os.environ.get("ADD1000_DIR", "./flat")
 S = 384
 
 
@@ -62,7 +62,7 @@ def main():
     P = pairs()
     print(f"paired ADD1000: {len(P)}", flush=True)
 
-    out = os.environ.get("SM_MODEL_DIR", "./model"); os.makedirs(out, exist_ok=True)
+    out = os.environ.get("OUT_DIR", "./model"); os.makedirs(out, exist_ok=True)
     per_image = {}   # id -> {cond: [cc, sim, kld]}
     summary = {}
 

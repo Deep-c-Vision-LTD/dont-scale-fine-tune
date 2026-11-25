@@ -13,7 +13,7 @@ evaluated at a common resolution with CC / SIM / KLD. A per-fold ADD1000
 centre-bias (mean train log-density) is supplied to DeepGaze as its documented
 external centre-bias input, i.e. the model is adapted to ADD1000 as intended.
 
-Channels: images -> SM_CHANNEL_IMAGES (ADD1000 *.jpg), maps -> SM_CHANNEL_MAPS (*.png)
+Inputs: images -> $ADD1000_IMAGES (ADD1000 *.jpg), maps -> $ADD1000_MAPS (*.png); outputs -> $OUT_DIR
 """
 import os, glob, json, subprocess, sys, traceback
 import numpy as np
@@ -51,9 +51,9 @@ def main():
     import deepgaze_pytorch
 
     dev = "cuda" if torch.cuda.is_available() else "cpu"
-    IMG = os.environ.get("SM_CHANNEL_IMAGES", "./images")
-    MAP = os.environ.get("SM_CHANNEL_MAPS", "./maps")
-    out = os.environ.get("SM_MODEL_DIR", "./model"); os.makedirs(out, exist_ok=True)
+    IMG = os.environ.get("ADD1000_IMAGES", "./images")
+    MAP = os.environ.get("ADD1000_MAPS", "./maps")
+    out = os.environ.get("OUT_DIR", "./model"); os.makedirs(out, exist_ok=True)
 
     ids = sorted({os.path.splitext(os.path.basename(p))[0]
                   for p in glob.glob(os.path.join(IMG, "*.jpg"))},
